@@ -1,0 +1,14 @@
+{% extends "accounts/main_theme.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<form action="." method="post">
+    {{ form.media }}
+    {{ form|crispy }}
+    {% csrf_token %}
+    <input type="submit" value="Start Auction" class="btn btn-success" > 
+</form>
+
+{% endblock %}

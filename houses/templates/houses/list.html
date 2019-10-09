@@ -1,0 +1,17 @@
+{% extends "accounts/main_theme.html" %}
+{% block main %}
+<div>
+    {% for house in house_list %}
+
+    {% if not house.booked_house %}
+
+    <p>
+        <a href="{{ house.get_absolute_url }} "> {{ house.address }} </a>
+    </p>
+
+    {% endif %}
+
+    {% endfor %}
+</div>
+{% endblock %}
+

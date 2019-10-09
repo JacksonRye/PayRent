@@ -1,0 +1,31 @@
+{% extends "accounts/main_theme.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block main %}
+
+<h1>Welcome {{ user.username }} </h1>
+
+<h3>Booked house</h3>
+{% with user.profile.booked.house as booked_house %}
+{% if booked_house %}
+<p>{{ booked_house.address }} </p>
+<img src="{{ booked_house.images.get.image.url }}" alt="...">
+
+<form action="{% url "booking:booking_delete" user.profile.booked.id %}" method="post">
+    <button type="submit">Delete Booked House?</button>
+    {% csrf_token %}
+</form>
+
+{% else %}
+
+<p>Such Empty. <a href="{% url "accounts:dashboard" %}">Find Houses to Book?</a></p>
+
+{% endif %}
+
+{% endwith %}
+
+
+
+
+{% endblock %}

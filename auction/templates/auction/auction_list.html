@@ -1,0 +1,9 @@
+{% extends "accounts/main_theme.html" %}
+
+{% block content %}
+
+    {% for auction in auction_list %}
+        <p><a href="#">{{ auction.title  }}</a></p>
+    {% endfor %}
+
+{% endblock %}

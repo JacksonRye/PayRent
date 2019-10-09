@@ -1,0 +1,20 @@
+{% extends "accounts/main_theme.html" %}
+
+{% block main %}
+
+<form action="{%  url "booking:booking_add" house.id request.user.username %}" method="post">
+
+    {{ house.address }} <br>
+    {{ house.description }} <br>
+    <img src="{{ house.images.get.image.url }}" alt="...">
+    {% if not house.booked_house %}
+    <button type="submit" class="btn btn-success">Book it!</button>
+    {% else %}
+    <button type="submit" class="btn btn-success" disabled>
+        Has already been booked
+    </button>
+    {% endif %}
+    {% csrf_token %}
+</form>
+
+{% endblock %}
